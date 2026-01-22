@@ -1,6 +1,7 @@
 # app.py
 import streamlit as st
 import pandas as pd
+import joblib
 
 # Load trained model
 model = joblib.load("mobile_price_model.joblib")
@@ -38,4 +39,5 @@ input_df.drop("Brand_Apple", axis=1, inplace=True)
 if st.button("Predict Price"):
     prediction = model.predict(input_df)[0]
     st.success(f"💰 Estimated Mobile Price: ${prediction:.2f}")
+
 
